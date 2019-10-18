@@ -1,0 +1,61 @@
+数据库表设计
+	1对1 非常少
+		学生信息表
+		基本信息比如：姓名		学号		班级		年龄		性别
+		学生档案资料表
+		历史记录信息：小学		初中		高中		籍贯		普通高中毕业会考成绩（语数英）		
+		体格（身高、体重）	体育成绩（1000米，仰卧起坐、引体向上）等....
+		父亲姓名		父亲职业		父亲联系电话	母亲姓名		母亲职业		母亲联系电话		
+	1对多
+		学生信息表
+		基本信息比如：姓名		学号		班级		年龄		性别
+		班级信息表
+		比如：几年级	几班
+		一个学生只能有一个班级，一个班级可以包含多个学生
+	多对多
+		学生信息表
+		基本信息比如：姓名		学号		班级		年龄		性别
+		选修课程信息表
+		比如：课程名	授课老师		课程数	学分		最大人数
+		一个学生可以选修多个课程，一个选修课可以被多个学生选修。
+
+创建上述表格
+（什么是外键）
+
+多表联合查询
+https://blog.csdn.net/github_37767025/article/details/67636061
+
+分页查询
+https://blog.csdn.net/starleejay/article/details/78802610
+
+如何使用c3p0做增删改查
+
+事务
+	try{
+		 con.setAutoCommit(false);//开启事务
+		 ......
+		 con.commit();//try的最后提交事务      
+	} catch（） {
+		con.rollback();//回滚事务
+	}
+	
+使用ThreadLocal管理Connection
+https://www.cnblogs.com/dolphin0520/p/3920407.html
+
+使用QueryRunner做曾删改查
+https://blog.csdn.net/a911711054/article/details/77719685
+如何设置参数
+增加 删除 修改
+查询得到结果集的几种方式
+
+dbutils
+
+beanutils
+https://blog.csdn.net/zs520ct/article/details/72872560
+
+fileupload
+https://blog.csdn.net/qq_24053795/article/details/50608283
+
+如何把分页做成统一的，可以公用的
+创建Page 数据模型
+把分页的前端页面放在单独的jsp，可以通过jsp include 包含并传递参数
