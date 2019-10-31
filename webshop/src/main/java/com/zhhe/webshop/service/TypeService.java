@@ -12,4 +12,5 @@ import java.util.List;
 public interface TypeService
 {
     List<Type> findAll();
+    String getTypeNameById(Integer id);
 }

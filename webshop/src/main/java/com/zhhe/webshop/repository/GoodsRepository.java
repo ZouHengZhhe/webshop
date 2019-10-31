@@ -21,4 +21,26 @@ public interface GoodsRepository extends JpaRepository<Goods,Integer>
 
     @Query(value = "select g.id,g.name,g.cover,g.price from recommend r ,goods g where r.type=1 and r.goods_id=g.id limit 1 ",nativeQuery = true)
     Map<String,Object> getScrollGoods();
+
+//    分页查询所有商品
+    @Query(value = "select * from goods limit ?,?",nativeQuery = true)
+    List<Goods> findAllGoodsList(int startIndex,int pageSize);
+
+//    分页查询某个类型的商品
+    @Query(value = "select * from goods where type_id=? limit ?,?",nativeQuery = true)
+    List<Goods> findTypeGoodsList(int type_id,int startIndex,int pageSize);
+
+    @Query(value = "select count(*) from goods",nativeQuery = true)
+    int getAllGoodsCount();
+
+    @Query(value = "select count(*) from goods where type_id=?",nativeQuery = true)
+    int getTypeGoodsCount(int typeId);
+
+    //分页查询热销、新品商品
+    @Query(value = "select * from goods g,recommend r where r.type=? and g.type_id=r.goods_id limit ?,?",nativeQuery = true)
+    List<Goods> getGoodsRecommendList(int typeId,int startIndex,int pageSize);
+
+    //分页查询热销、新品商品总数
+    @Query(value = "select count(*) from goods where type_id=?",nativeQuery = true)
+    int getGoodsRecommendCount(int typeId);
 }
