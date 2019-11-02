@@ -14,9 +14,10 @@
             <!--navbar-header-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/fore/index" class="active">首页</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle " data-toggle="dropdown">商品分类<b class="caret"></b></a>
+
+                    <li><a href="/fore/index" <#if flag="1">class="active"</#if>>首页</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle <#if flag="2">active</#if>" data-toggle="dropdown">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
                             <li>
                                 <div class="row">
@@ -35,8 +36,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="/fore/goodsRecommendList?typeId=2&pageNumber=1" >热销</a></li>
-                    <li><a href="/fore/goodsRecommendList?typeId=3&pageNumber=1" >新品</a></li>
+                    <li><a href="/fore/goodsRecommendList?typeId=2&pageNumber=1" <#if flag=="3"&&typeId==2>class="active" </#if>>热销</a></li>
+                    <li><a href="/fore/goodsRecommendList?typeId=3&pageNumber=1" <#if flag=="3"&&typeId==3>class="active" </#if>>新品</a></li>
 
                     <li><a href="register.action?flag=-1" >注册</a></li>
                     <li><a href="login.action?flag=-1" >登录</a></li>

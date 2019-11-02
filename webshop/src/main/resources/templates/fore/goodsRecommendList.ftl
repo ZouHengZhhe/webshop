@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +14,7 @@
 </head>
 <body>
 
+<#assign flag="3">
 <#include "header.ftl">
 
 	

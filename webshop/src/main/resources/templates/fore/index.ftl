@@ -13,6 +13,7 @@
 </head>
 <body>
 	<#--头部-->
+    <#assign flag="1">
 	<#include "header.ftl">
 	
 	<!--banner-->
@@ -48,7 +49,7 @@
                         <div class="gallery-info galrr-info-two">
                             <p>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                <a href="detail.action?goodid=6">查看详情</a>
+                                <a href="/fore/goodsDetail?goodsId=${item.id}">查看详情</a>
                             </p>
                             <a class="shop" href="javascript:;" onclick="buy(6)">立刻购买</a>
                             <div class="clearfix"> </div>
@@ -79,7 +80,7 @@
                         <div class="gallery-info">
                             <p>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                <a href="detail.action?goodid=14">查看详情</a>
+                                <a href="/fore/goodsDetail?goodsId=${item.id}">查看详情</a>
                             </p>
                             <a class="shop" href="javascript:;" onclick="buy(14)">立刻购买</a>
                             <div class="clearfix"> </div>

@@ -1,8 +1,11 @@
 package com.zhhe.webshop.service.impl;
 
 import com.zhhe.webshop.bean.domain.Goods;
+import com.zhhe.webshop.bean.domain.Type;
+import com.zhhe.webshop.bean.model.GoodsDetail;
 import com.zhhe.webshop.bean.model.Page;
 import com.zhhe.webshop.repository.GoodsRepository;
+import com.zhhe.webshop.repository.TypeRepository;
 import com.zhhe.webshop.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,8 @@ public class GoodsServiceImpl implements GoodsService
 {
     @Autowired
     private GoodsRepository goodsRepository;
+    @Autowired
+    private TypeRepository typeRepository;
 
     @Override
     public List<Map<String, Object>> getGoodsList(int recommendType)
@@ -83,5 +88,14 @@ public class GoodsServiceImpl implements GoodsService
         page.setPageSizeAndTotalCount(pageSize,page.getTotalCount());
         page.setList(list);
         return page;
+    }
+
+    @Override
+    public GoodsDetail findDetailById(Integer goodsId)
+    {
+        Goods goods=goodsRepository.findById(goodsId).get();
+        Type type=typeRepository.findById(goods.getType_id()).get();
+        GoodsDetail goodsDetail=new GoodsDetail(goods, type);
+        return goodsDetail;
     }
 }

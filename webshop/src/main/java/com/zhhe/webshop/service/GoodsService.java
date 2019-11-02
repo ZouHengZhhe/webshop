@@ -1,6 +1,7 @@
 package com.zhhe.webshop.service;
 
 import com.zhhe.webshop.bean.domain.Goods;
+import com.zhhe.webshop.bean.model.GoodsDetail;
 import com.zhhe.webshop.bean.model.Page;
 
 import java.util.List;
@@ -18,5 +19,5 @@ public interface GoodsService
 //    List<Goods> findGoodsList(int typeId,int pageNo,int pageSize);
     Page getGoodsPage(int typeId,int pageNo);
     Page getGoodsRecommendPage(int typeId,int pageNumber);
-
+    GoodsDetail findDetailById(Integer goodsId);
 }

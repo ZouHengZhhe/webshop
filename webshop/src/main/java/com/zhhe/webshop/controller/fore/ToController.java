@@ -1,6 +1,8 @@
 package com.zhhe.webshop.controller.fore;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.zhhe.webshop.bean.domain.Goods;
+import com.zhhe.webshop.bean.model.GoodsDetail;
 import com.zhhe.webshop.bean.model.Page;
 import com.zhhe.webshop.service.GoodsService;
 import com.zhhe.webshop.service.TypeService;
@@ -89,6 +91,17 @@ public class ToController
         modelAndView.addObject("page",page);
         modelAndView.addObject("typeId",typeId);
         modelAndView.setViewName("fore/goodsRecommendList");
+        return modelAndView;
+    }
+
+    @RequestMapping("goodsDetail")
+    public ModelAndView goddsDetail(ModelAndView modelAndView, ServletRequest request)
+    {
+        int goodsId=Integer.parseInt(request.getParameter("goodsId"));
+        GoodsDetail goodsDetail=goodsService.findDetailById(goodsId);
+        modelAndView.addObject("goodsDetail",goodsDetail);
+
+        modelAndView.setViewName("fore/goodsDetail");
         return modelAndView;
     }
 }

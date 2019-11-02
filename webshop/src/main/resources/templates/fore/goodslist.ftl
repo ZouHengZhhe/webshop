@@ -16,6 +16,7 @@
 </head>
 <body>
 
+<#assign flag="2">
 <#include "header.ftl">
 
 	
@@ -53,7 +54,9 @@
 			</div>
 			<div>
 				<div style='text-align:center;'>
-				<#if page.pageNumber==1>
+                    <#--<a class='btn btn-info' <#if page.pageNumber==1>disabled<#else >href="/fore/goodsList?pageNo=1&id=${id}</#if> disabled >首页</a>-->
+
+					<#if page.pageNumber==1>
 					<a class='btn btn-info'  disabled >首页</a>
 				<#else>
 					<a class='btn btn-info'  href="/fore/goodsList?pageNo=1&id=${id}" >首页</a>
