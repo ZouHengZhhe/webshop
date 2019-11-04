@@ -100,7 +100,7 @@ public class ToController
         int goodsId=Integer.parseInt(request.getParameter("goodsId"));
         GoodsDetail goodsDetail=goodsService.findDetailById(goodsId);
         modelAndView.addObject("goodsDetail",goodsDetail);
-
+        System.out.print(goodsDetail);
         modelAndView.setViewName("fore/goodsDetail");
         return modelAndView;
     }

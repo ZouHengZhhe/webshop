@@ -26,6 +26,7 @@
 <body>
 
 	<!--header-->
+	<#assign flag="1">
 	<#include "header.ftl">
 	
 	<!--//single-page-->
@@ -36,28 +37,27 @@
 					<div class="flexslider">
 						
 						<ul class="slides">
-							<li data-thumb="picture/6-1.jpg">
-								<div class="thumb-image"> <img src="../../static/fore/picture/6-1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+							<li data-thumb="../../static/fore/${goodsDetail.goods.cover}">
+								<div class="thumb-image"> <img src="../../static/fore/${goodsDetail.goods.cover}" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
-							<li data-thumb="picture/6-2.jpg">
-								 <div class="thumb-image"> <img src="../../static/fore/picture/6-2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+							<li data-thumb="../../static/fore/${goodsDetail.goods.image1}">
+								 <div class="thumb-image"> <img src="../../static/fore/${goodsDetail.goods.image1}" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
-							<li data-thumb="picture/6-3.jpg">
-							   <div class="thumb-image"> <img src="../../static/fore/picture/6-3.jpg" data-imagezoom="true" class="img-responsive"> </div>
+							<li data-thumb="../../static/fore/${goodsDetail.goods.image2}">
+							   <div class="thumb-image"> <img src="../../static/fore/${goodsDetail.goods.image2}" data-imagezoom="true" class="img-responsive"> </div>
 							</li> 
 						</ul>
 					</div>
 				</div>	
 				<div class="col-md-4 single-grid simpleCart_shelfItem">		
-					<h3>夜礼服</h3>
+					<h3>${goodsDetail.goods.name}</h3>
 					<div class="tag">
 						<p>分类 : <a href="goods.action?typeid=5">经典系列</a></p>
 					</div>
-					<p>介绍: 空气中流动着的厚重巧克力气息,一切在夜色下坡上银装.可可野性的诱惑,加之朗姆酒的浪漫清冽,传递出来自神秘过度的魅惑与力量.
-主口味:香浓巧克力 主要原料:黑巧克力,乳脂奶油,大黄油,朗姆酒,巧克力果仁脆,黑巧克力软糖 甜度:四星（满五星） 最佳食用温度：5-7摄氏度</p>
+					<p>${goodsDetail.goods.intro}</p>
 					<div class="galry">
 						<div class="prices">
-							<h5 class="item_price">¥ 299</h5>
+							<h5 class="item_price">¥ ${goodsDetail.goods.price}</h5>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -68,16 +68,10 @@
 				<div class="col-md-4 single-grid1">
 					<!-- <h2>商品分类</h2> -->
 					<ul>
-						
-							<li><a href="goods.action?typeid=5">经典系列</a></li>
-						
-							<li><a href="goods.action?typeid=4">法式系列</a></li>
-						
-							<li><a href="goods.action?typeid=3">儿童系列</a></li>
-						
-							<li><a href="goods.action?typeid=2">零食系列</a></li>
-						
-							<li><a href="goods.action?typeid=1">冰淇淋系列</a></li>
+                        <a href="/fore/goodsList">全部系列</a></li>
+							<#list typesList as list>
+								<li><a href="/fore/goodsList?id=${list.id}&pageNo=1">${list.name}</a></li>
+							</#list>
 						
 					</ul>
 				</div>

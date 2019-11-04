@@ -29,7 +29,7 @@
 
 				<#list page.list as g>
 					<div class="product-grid">
-                        <a href="detail.action?goodid=6">
+                        <a href="/fore/goodsDetail?goodsId=${g.id}">
                             <div class="more-product"><span> </span></div>
                             <div class="product-img b-link-stripe b-animate-go  thickbox">
                                 <img src="../../static/fore/${g.cover}" class="img-responsive" alt="${g.name}" width="240" height="240">

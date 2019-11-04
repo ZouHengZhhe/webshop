@@ -20,11 +20,11 @@
 	
 		<div class="banner">
 			<div class="container">
-				<h2 class="hdng"><a href="detail.action?goodid=7">${scrollGoodsMap.name}</a><span></span></h2>
+				<h2 class="hdng"><a href="/fore/goodsDetail?goodsId=${scrollGoodsMap.id}">${scrollGoodsMap.name}</a><span></span></h2>
 				<p>今日精选推荐</p>
 				<a class="banner_a" href="javascript:;" onclick="buy(7)">立刻购买</a>
 				<div class="banner-text">		
-					<a href="detail.action?goodid=7">
+					<a href="/fore/goodsDetail?goodsId=${scrollGoodsMap.id}">
 						<img src="../../static/fore/${scrollGoodsMap.cover}" alt="${scrollGoodsMap.name}" width="350" height="350">
 					</a>	
 				</div>
@@ -43,7 +43,7 @@
 
 				<#list hotGoodsList as item>
                     <div class="col-md-4 gallery-grid glry-two">
-                        <a href="detail.action?goodid=6">
+                        <a href="/fore/goodsDetail?goodsId=${item.id}">
                             <img src="../../static/fore/${item.cover}" class="img-responsive" alt="${item.name}" width="350" height="350"/>
                         </a>
                         <div class="gallery-info galrr-info-two">
@@ -74,13 +74,13 @@
 
 				<#list newGoodsList as newGoods>
                     <div class="col-md-3 gallery-grid ">
-                        <a href="detail.action?goodid=14">
+                        <a href="/fore/goodsDetail?goodsId=${newGoods.id}">
                             <img src="../../static/fore/${newGoods.cover}" class="img-responsive" alt="${newGoods.name}"/>
                         </a>
                         <div class="gallery-info">
                             <p>
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                <a href="/fore/goodsDetail?goodsId=${item.id}">查看详情</a>
+                                <a href="/fore/goodsDetail?goodsId=${newGoods.id}">查看详情</a>
                             </p>
                             <a class="shop" href="javascript:;" onclick="buy(14)">立刻购买</a>
                             <div class="clearfix"> </div>
