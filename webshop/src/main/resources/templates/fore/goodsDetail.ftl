@@ -26,7 +26,7 @@
 <body>
 
 	<!--header-->
-	<#assign flag="1">
+	<#assign flag="0">
 	<#include "header.ftl">
 	
 	<!--//single-page-->

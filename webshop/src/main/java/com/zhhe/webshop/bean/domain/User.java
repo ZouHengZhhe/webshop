@@ -2,10 +2,7 @@ package com.zhhe.webshop.bean.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /*
  *Author:ZouHeng
@@ -19,8 +16,11 @@ public class User
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
     private String username;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String password;
     private String name;
     private String phone;

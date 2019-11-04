@@ -39,8 +39,8 @@
                     <li><a href="/fore/goodsRecommendList?typeId=2&pageNumber=1" <#if flag=="3"&&typeId==2>class="active" </#if>>热销</a></li>
                     <li><a href="/fore/goodsRecommendList?typeId=3&pageNumber=1" <#if flag=="3"&&typeId==3>class="active" </#if>>新品</a></li>
 
-                    <li><a href="register.action?flag=-1" >注册</a></li>
-                    <li><a href="login.action?flag=-1" >登录</a></li>
+                    <li><a href="/fore/toRegister" <#if flag=="4"> class="active" </#if>>注册</a></li>
+                    <li><a href="/fore/toLogin" <#if flag=="5"> class="active" </#if>>登录</a></li>
 
 
                     <li><a href="../admin.jsp" target="_blank">后台管理</a></li>
