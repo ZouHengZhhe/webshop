@@ -30,6 +30,8 @@ public class UserServiceImpl implements UserService
         {
             return false;
         }
+        user.setIsadmin(false);
+        user.setIsadmin(false);
         userRepository.save(user);
         return true;
     }
@@ -85,4 +87,12 @@ public class UserServiceImpl implements UserService
         }
         return null;
     }
+
+    @Override
+    @Transactional
+    public void update(User user)
+    {
+        userRepository.save(user);
+    }
+
 }

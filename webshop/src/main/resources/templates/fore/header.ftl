@@ -39,11 +39,18 @@
                     <li><a href="/fore/goodsRecommendList?typeId=2&pageNumber=1" <#if flag=="3"&&typeId==2>class="active" </#if>>热销</a></li>
                     <li><a href="/fore/goodsRecommendList?typeId=3&pageNumber=1" <#if flag=="3"&&typeId==3>class="active" </#if>>新品</a></li>
 
-                    <li><a href="/fore/toRegister" <#if flag=="4"> class="active" </#if>>注册</a></li>
-                    <li><a href="/fore/toLogin" <#if flag=="5"> class="active" </#if>>登录</a></li>
+                    <#if user??>
+                        <li><a href="/fore/toCenter" <#if flag=="4"> class="active" </#if>>个人中心</a></li>
+                        <li><a href="/fore/logout" <#if flag=="5"> class="active" </#if>>退出</a></li>
+                    <#else >
+                        <li><a href="/fore/toRegister" <#if flag=="4"> class="active" </#if>>注册</a></li>
+                        <li><a href="/fore/toLogin" <#if flag=="5"> class="active" </#if>>登录</a></li>
+                    </#if>
 
+                    <#if user??&&user.isadmin==true>
+                        <li><a href="../admin.jsp" target="_blank">后台管理</a></li>
+                    </#if>
 
-                    <li><a href="../admin.jsp" target="_blank">后台管理</a></li>
                 </ul>
                 <!--/.navbar-collapse-->
             </div>

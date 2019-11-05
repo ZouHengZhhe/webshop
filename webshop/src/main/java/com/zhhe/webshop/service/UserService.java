@@ -15,4 +15,5 @@ public interface UserService
     User loginByUsername(String username,String password);
     User loginByEmail(String email,String password);
     User login(String ue,String password);
+    void update(User user);
 }
