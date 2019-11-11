@@ -29,4 +29,16 @@ public class ToCtrl
     {
         return "fore/mycenter";
     }
+
+    @RequestMapping("toGoodsCart")
+    public String toGoodsCart()
+    {
+        return "fore/goods_cart";
+    }
+
+//    @RequestMapping("toMyOrders")
+//    public String toMyOrders()
+//    {
+//        return "fore/myorder";
+//    }
 }

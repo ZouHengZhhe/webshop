@@ -22,7 +22,7 @@
 			<div class="container">
 				<h2 class="hdng"><a href="/fore/goodsDetail?goodsId=${scrollGoodsMap.id}">${scrollGoodsMap.name}</a><span></span></h2>
 				<p>今日精选推荐</p>
-				<a class="banner_a" href="javascript:;" onclick="buy(7)">立刻购买</a>
+				<a class="banner_a" href="javascript:;" onclick="buy(${scrollGoodsMap.id})">立刻购买</a>
 				<div class="banner-text">		
 					<a href="/fore/goodsDetail?goodsId=${scrollGoodsMap.id}">
 						<img src="../../static/fore/${scrollGoodsMap.cover}" alt="${scrollGoodsMap.name}" width="350" height="350">
@@ -51,7 +51,7 @@
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                 <a href="/fore/goodsDetail?goodsId=${item.id}">查看详情</a>
                             </p>
-                            <a class="shop" href="javascript:;" onclick="buy(6)">立刻购买</a>
+                            <a class="shop" href="javascript:;" onclick="buy(${item.id})">立刻购买</a>
                             <div class="clearfix"> </div>
                         </div>
                         <div class="galy-info">
@@ -82,7 +82,7 @@
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                 <a href="/fore/goodsDetail?goodsId=${newGoods.id}">查看详情</a>
                             </p>
-                            <a class="shop" href="javascript:;" onclick="buy(14)">立刻购买</a>
+                            <a class="shop" href="javascript:;" onclick="buy(${newGoods.id})">立刻购买</a>
                             <div class="clearfix"> </div>
                         </div>
                         <div class="galy-info">

@@ -98,4 +98,10 @@ public class GoodsServiceImpl implements GoodsService
         GoodsDetail goodsDetail=new GoodsDetail(goods, type);
         return goodsDetail;
     }
+
+    @Override
+    public Goods getGoodsById(Integer id)
+    {
+        return goodsRepository.findById(id).get();
+    }
 }

@@ -1,9 +1,11 @@
 package com.zhhe.webshop.bean.domain;
 
+import com.zhhe.webshop.util.PriceUtil;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 /*
  *Author:ZouHeng
@@ -12,7 +14,8 @@ import java.util.Date;
  */
 @Entity
 @Data
-@Table(name = "order")
+@Table(name = "order_table")
+@ToString
 public class OrderTable
 {
     @Id
@@ -27,4 +30,65 @@ public class OrderTable
     private String address;     //收货地址
     private Date datetime;      //下单时间
     private Integer user_id;    //下单用户
+
+    @Transient
+    private Map<String, OrderItem> itemMap=new HashMap<>();
+    @Transient
+    private List<OrderItem> itemList=new ArrayList<>();
+
+    public OrderTable()
+    {
+    }
+
+    public OrderTable(Float total, Integer amount)
+    {
+        this.total = total;
+        this.amount = amount;
+    }
+
+    //将商品添加到购物车，购买商品
+    public void addGoods(Goods goods)
+    {
+        if (itemMap.containsKey(goods.getId().toString()))
+        {
+            OrderItem item=itemMap.get(goods.getId().toString());
+            item.setAmount(item.getAmount()+1);
+        }
+        else
+        {
+            OrderItem item=new OrderItem(goods.getPrice(),1,goods.getId(),id,goods);
+            itemMap.put(goods.getId().toString(),item);
+        }
+        total= PriceUtil.add(total,goods.getPrice());
+        amount++;
+    }
+
+    //在购物车中减少商品
+    public void lessonGoods(Integer goodsId)
+    {
+        if (itemMap.containsKey(goodsId.toString()))
+        {
+            OrderItem item=itemMap.get(goodsId.toString());
+            item.setAmount(item.getAmount()-1);
+            amount--;
+            total=PriceUtil.subtract(total,item.getPrice());
+            if (item.getAmount()==0)
+            {
+                itemMap.remove(goodsId.toString());
+            }
+        }
+    }
+
+    //在购物车中删除商品
+    public void delGoods(Integer goodsId)
+    {
+        if (itemMap.containsKey(goodsId.toString()))
+        {
+            OrderItem item=itemMap.get(goodsId.toString());
+            amount-=item.getAmount();
+            total=PriceUtil.subtract(total,item.getPrice()*item.getAmount());
+            itemMap.remove(goodsId.toString());
+        }
+    }
+
 }

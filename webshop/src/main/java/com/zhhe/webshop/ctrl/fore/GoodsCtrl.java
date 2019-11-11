@@ -1,15 +1,21 @@
 package com.zhhe.webshop.ctrl.fore;
 
+import com.zhhe.webshop.bean.domain.Goods;
+import com.zhhe.webshop.bean.domain.OrderTable;
 import com.zhhe.webshop.bean.model.GoodsDetail;
 import com.zhhe.webshop.bean.model.Page;
 import com.zhhe.webshop.service.GoodsService;
 import com.zhhe.webshop.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -100,4 +106,55 @@ public class GoodsCtrl
         modelAndView.setViewName("fore/goodsDetail");
         return modelAndView;
     }
+
+    @PostMapping("goodsBuy")
+    public void goodsBuy(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        //判断是否已经有订单
+        OrderTable order;
+        if (request.getSession().getAttribute("order")!=null)
+        {
+            order= (OrderTable) request.getSession().getAttribute("order");
+        }
+        else
+        {
+            order=new OrderTable(0f,0);
+        }
+
+        Integer goodsId=Integer.parseInt(request.getParameter("goodsId"));
+//        System.out.println("[GoodsCtrl/goodsBuy]  goodsId = "+goodsId);
+        Goods goods=goodsService.getGoodsById(goodsId);
+        if (goods.getStock()>0)
+        {
+            order.addGoods(goods);
+           response.getWriter().print("ok");
+        }
+        else
+        {
+            response.getWriter().print("fail");
+        }
+        request.getSession().setAttribute("order",order);   //将订单存入session
+    }
+
+    @RequestMapping("goodsLesson")
+    public void goodsLesson(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        //判断是否已经有订单
+        OrderTable order= (OrderTable) request.getSession().getAttribute("order");
+        Integer goodsId=Integer.parseInt(request.getParameter("goodsId"));
+        order.lessonGoods(goodsId);
+        response.getWriter().print("ok");
+        request.getSession().setAttribute("order",order);   //将订单存入session
+    }
+
+    @RequestMapping("goodsDel")
+    public void goodsDel(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        OrderTable order= (OrderTable) request.getSession().getAttribute("order");
+        Integer goodsId=Integer.parseInt(request.getParameter("goodsId"));
+        order.delGoods(goodsId);
+        response.getWriter().print("ok");
+        request.getSession().setAttribute("order",order);   //将订单存入session
+    }
 }
+
