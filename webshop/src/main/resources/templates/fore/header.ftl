@@ -64,8 +64,8 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </a>
                 <div class="search">
-                    <form class="navbar-form" action="search.action">
-                        <input type="text" class="form-control" name="name">
+                    <form class="navbar-form" action="/fore/goodsSearch">
+                        <input type="text" class="form-control" name="keyword">
                         <button type="submit" class="btn btn-default" aria-label="Left Align">搜索</button></form>
                 </div>
             </div>

@@ -21,4 +21,5 @@ public interface GoodsService
     Page getGoodsRecommendPage(int typeId,int pageNumber);
     GoodsDetail findDetailById(Integer goodsId);
     Goods getGoodsById(Integer id);
+    Page getGoodsSearchPage(String keyword,int pageNo);
 }

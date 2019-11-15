@@ -36,9 +36,9 @@ public class ToCtrl
         return "fore/goods_cart";
     }
 
-//    @RequestMapping("toMyOrders")
-//    public String toMyOrders()
-//    {
-//        return "fore/myorder";
-//    }
+    @RequestMapping("toTest")
+    public String toTest()
+    {
+        return "test";
+    }
 }

@@ -16,6 +16,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -81,7 +83,8 @@ public class GoodsCtrl
         if (typeId == 2)
         {
             modelAndView.addObject("name", "热销商品");
-        } else
+        }
+        else
         {
             modelAndView.addObject("name", "新品商品");
         }
@@ -112,49 +115,68 @@ public class GoodsCtrl
     {
         //判断是否已经有订单
         OrderTable order;
-        if (request.getSession().getAttribute("order")!=null)
+        if (request.getSession().getAttribute("order") != null)
         {
-            order= (OrderTable) request.getSession().getAttribute("order");
+            order = (OrderTable) request.getSession().getAttribute("order");
         }
         else
         {
-            order=new OrderTable(0f,0);
+            order = new OrderTable(0f, 0);
         }
 
-        Integer goodsId=Integer.parseInt(request.getParameter("goodsId"));
+        Integer goodsId = Integer.parseInt(request.getParameter("goodsId"));
 //        System.out.println("[GoodsCtrl/goodsBuy]  goodsId = "+goodsId);
-        Goods goods=goodsService.getGoodsById(goodsId);
-        if (goods.getStock()>0)
+        Goods goods = goodsService.getGoodsById(goodsId);
+        if (goods.getStock() > 0)
         {
             order.addGoods(goods);
-           response.getWriter().print("ok");
+            response.getWriter().print("ok");
         }
         else
         {
             response.getWriter().print("fail");
         }
-        request.getSession().setAttribute("order",order);   //将订单存入session
+        request.getSession().setAttribute("order", order);   //将订单存入session
     }
 
     @RequestMapping("goodsLesson")
     public void goodsLesson(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         //判断是否已经有订单
-        OrderTable order= (OrderTable) request.getSession().getAttribute("order");
-        Integer goodsId=Integer.parseInt(request.getParameter("goodsId"));
+        OrderTable order = (OrderTable) request.getSession().getAttribute("order");
+        Integer goodsId = Integer.parseInt(request.getParameter("goodsId"));
         order.lessonGoods(goodsId);
         response.getWriter().print("ok");
-        request.getSession().setAttribute("order",order);   //将订单存入session
+        request.getSession().setAttribute("order", order);   //将订单存入session
     }
 
     @RequestMapping("goodsDel")
     public void goodsDel(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
-        OrderTable order= (OrderTable) request.getSession().getAttribute("order");
-        Integer goodsId=Integer.parseInt(request.getParameter("goodsId"));
+        OrderTable order = (OrderTable) request.getSession().getAttribute("order");
+        Integer goodsId = Integer.parseInt(request.getParameter("goodsId"));
         order.delGoods(goodsId);
         response.getWriter().print("ok");
-        request.getSession().setAttribute("order",order);   //将订单存入session
+        request.getSession().setAttribute("order", order);   //将订单存入session
+    }
+
+    @RequestMapping("goodsSearch")
+    public ModelAndView goodsSearch(ModelAndView modelAndView,HttpServletRequest request) throws UnsupportedEncodingException
+    {
+        String keyword=request.getParameter("keyword");
+        System.out.println("pageNo = "+request.getParameter("pageNo"));
+        int pageNo = 1;
+        if (request.getParameter("pageNo") != null)
+        {
+
+            pageNo = Integer.parseInt(request.getParameter("pageNo"));
+        }
+        Page page=goodsService.getGoodsSearchPage(keyword,pageNo);
+        modelAndView.addObject("page", page);
+        modelAndView.addObject("keyword",keyword);
+//        modelAndView.addObject("keyword", URLEncoder.encode(keyword, "utf-8"));
+        modelAndView.setViewName("fore/goods_search");
+        return modelAndView;
     }
 }
 

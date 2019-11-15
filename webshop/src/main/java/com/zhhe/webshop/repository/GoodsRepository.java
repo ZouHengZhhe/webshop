@@ -43,4 +43,11 @@ public interface GoodsRepository extends JpaRepository<Goods,Integer>
     //分页查询热销、新品商品总数
     @Query(value = "select count(*) from goods where type_id=?",nativeQuery = true)
     int getGoodsRecommendCount(int typeId);
+
+    //搜索商品，得到商品总数量
+    @Query(value = "select count(*) from goods where name like %?%",nativeQuery = true)
+    int fuzzySearchCount(String keyword);
+
+    @Query(value = "select * from goods where name like %?% limit ?,?",nativeQuery = true)
+    List<Goods> fuzzySearchGoods(String keyword,int startIndex,int pageSize);
 }

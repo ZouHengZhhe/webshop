@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="../../static/fore/css/style.css">
     <script type="text/javascript" src="../../static/fore/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../static/fore/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/simpleCart.min.js"></script>
+    <#--<script type="text/javascript" src="js/simpleCart.min.js"></script>-->
     <script type="text/javascript" src="../../static/fore/layer/layer.js"></script>
     <script type="text/javascript" src="../../static/fore/js/cart.js"></script>
 </head>
@@ -20,7 +20,7 @@
 <!--products-->
 <div class="products">
     <div class="container">
-        <h2>${typeName}</h2>
+        <h2>搜索'${keyword}'的结果</h2>
         <div class="col-md-12 product-model-sec">
               <#list page.list as g>
                 <div class="product-grid">
@@ -55,30 +55,28 @@
                     <#if page.pageNumber==1>
                       <a class='btn btn-info' disabled>首页</a>
 					<#else>
-                        <a class='btn btn-info' href="/fore/goodsList?pageNo=1&id=${id}">首页</a></#if>
+                        <a class='btn btn-info' href="/fore/goodsSearch?pageNo=1&keyword=${keyword}">首页</a></#if>
                     <#if page.pageNumber==1>
                       <a class='btn btn-info' disabled>上一页</a>
 					<#else>
-                        <a class='btn btn-info' href="/fore/goodsList?pageNo=${page.pageNumber-1}&id=${id}">上一页</a></#if>
+                        <a class='btn btn-info' href="/fore/goodsSearch?pageNo=${page.pageNumber-1}&keyword=${keyword}">上一页</a></#if>
                 <h3 style='display:inline;'>[${page.pageNumber}/${page.totalPage}]</h3>
                 <h3 style='display:inline;'>[${page.totalCount}]</h3>
                     <#if page.pageNumber==page.totalPage>
                       <a class='btn btn-info' disabled>下一页</a>
 					<#else>
-                        <a class='btn btn-info' href="/fore/goodsList?pageNo=${page.pageNumber+1}&id=${id}">下一页</a></#if>
+                        <a class='btn btn-info' href="/fore/goodsSearch?pageNo=${page.pageNumber+1}&keyword=${keyword}">下一页</a></#if>
                     <#if page.pageNumber==page.totalPage>
                       <a class='btn btn-info' disabled>尾页</a>
 					<#else>
-                        <a class='btn btn-info' href="/fore/goodsList?pageNo=${page.totalPage}&id=${id}">尾页</a></#if>
-                <input type='text' class='form-control' style='display:inline;width:60px;' value='' />
-                <a class='btn btn-info' href='javascript:void(0);' onclick='location.href="/fore/goodsList?id=${id}&pageNo="+(this.previousSibling.value)'>GO</a></div>
+                        <a class='btn btn-info' href="/fore/goodsSearch?pageNo=${page.totalPage}&keyword=${keyword}">尾页</a></#if>
+                <input id="goInput" type='text' class='form-control' style='display:inline;width:60px;' value='' />
+                <a class='btn btn-info' href='javascript:void(0);' onclick='location.href="/fore/goodsSearch?keyword=${keyword}&pageNo="+(document.getElementById("goInput").value)'>GO</a></div>
         </div>
     </div>
 </div>
 
-
 <!--//products-->
-        <#include "footer.html">
-</body>
+        <#include "footer.html"></body>
 
 </html>

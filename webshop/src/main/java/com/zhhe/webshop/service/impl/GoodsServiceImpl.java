@@ -104,4 +104,20 @@ public class GoodsServiceImpl implements GoodsService
     {
         return goodsRepository.findById(id).get();
     }
+
+    //搜索商品，模糊查询
+    @Override
+    public Page getGoodsSearchPage(String keyword,int pageNo)
+    {
+        Page page=new Page();
+        page.setPageNumber(pageNo);
+        int pageSize=8;
+        page.setPageSize(pageSize);
+        int startIndex=(pageNo-1)*pageSize;
+        page.setTotalCount(goodsRepository.fuzzySearchCount(keyword));
+        List list=goodsRepository.fuzzySearchGoods(keyword,startIndex,pageSize);
+        page.setPageSizeAndTotalCount(pageSize,page.getTotalCount());
+        page.setList(list);
+        return page;
+    }
 }
