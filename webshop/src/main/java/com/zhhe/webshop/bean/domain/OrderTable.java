@@ -35,9 +35,22 @@ public class OrderTable
     private Map<String, OrderItem> itemMap=new HashMap<>();
     @Transient
     private List<OrderItem> itemList=new ArrayList<>();
+    @Transient
+    private String username;
 
     public OrderTable()
     {
+    }
+
+    public OrderTable(Integer id,Float total, Integer status, String address, Integer paytype, Date datetime, String username)
+    {
+        this.id=id;
+        this.total = total;
+        this.status = status;
+        this.paytype = paytype;
+        this.address = address;
+        this.datetime = datetime;
+        this.username=username;
     }
 
     public OrderTable(Float total, Integer amount)

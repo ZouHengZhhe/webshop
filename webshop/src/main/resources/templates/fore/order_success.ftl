@@ -40,11 +40,6 @@
 	</div>
 	<!--//cart-items-->
 
-
-
-
-
-
 <!--footer-->
         <#include "footer.html">
 <!--//footer--></body>

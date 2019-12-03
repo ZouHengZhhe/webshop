@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Data
-//@Table(name = "orderitem")
+@Table(name = "order_item")
 public class OrderItem
 {
     @Id
@@ -24,9 +24,20 @@ public class OrderItem
 
     @Transient
     private Goods goods;    //添加Goods，方便前端获取
+    @Transient
+    private String goodsName;
 
     public OrderItem()
     {
+    }
+    public OrderItem(Integer id,Float price, Integer amount, Integer goods_id, Integer order_id,String goodsName)
+    {
+        this.id=id;
+        this.price = price;
+        this.amount = amount;
+        this.goods_id = goods_id;
+        this.order_id = order_id;
+        this.goodsName=goodsName;
     }
 
     public OrderItem(Float price, Integer amount, Integer goods_id, Integer order_id,Goods goods)

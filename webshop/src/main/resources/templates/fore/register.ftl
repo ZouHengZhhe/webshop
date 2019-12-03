@@ -67,15 +67,9 @@
 	</div>
 	<!--//account-->
 
-	
-
-
-
-
 	<!--footer-->
 	<#include "footer.html">
 	<!--//footer-->
 
-	
 </body>
 </html>

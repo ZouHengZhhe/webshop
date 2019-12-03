@@ -1,6 +1,7 @@
 package com.zhhe.webshop.service;
 
 import com.zhhe.webshop.bean.domain.User;
+import com.zhhe.webshop.bean.model.Page;
 
 /*
  *Author:ZouHeng
@@ -16,4 +17,9 @@ public interface UserService
     User loginByEmail(String email,String password);
     User login(String ue,String password);
     void update(User user);
+    Page getUserPage(int pageNo);
+    void updatePwd(String username,String password);
+    User findByUsername(String username);
+    void save(User user);
+    boolean del(Integer id);
 }

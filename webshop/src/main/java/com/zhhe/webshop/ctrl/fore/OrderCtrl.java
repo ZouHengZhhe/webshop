@@ -27,6 +27,7 @@ public class OrderCtrl
     @Autowired
     private OrderService orderService;
 
+    //提交订单
     @RequestMapping("orderSubmit")
     public ModelAndView orderSubmit(ModelAndView modelAndView,HttpServletRequest request)
     {

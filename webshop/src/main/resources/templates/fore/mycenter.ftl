@@ -14,12 +14,6 @@
 </head>
 <body>
 
-	
-
-
-
-
-
 	<!--header-->
 	<#assign flag="0">
 	<#include "header.ftl">

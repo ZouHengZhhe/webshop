@@ -57,7 +57,9 @@ public class GoodsCtrl
     {
         int typeId = 0;
         String typeName = "全部系列";
-        if (request.getParameter("id") != null)
+//        System.out.println(request.getParameter("id"));
+//        System.out.println();
+        if (request.getParameter("id") != null&&!request.getParameter("id").equals("0"))
         {
             typeId = Integer.parseInt(request.getParameter("id"));
             typeName = typeService.getTypeNameById(typeId);
@@ -67,6 +69,7 @@ public class GoodsCtrl
         {
             pageNo = Integer.parseInt(request.getParameter("pageNo"));
         }
+//        System.out.println("GoodsCtrl/goodsList   typeId = "+typeId+"   typeName = "+typeName);
         Page page = goodsService.getGoodsPage(typeId, pageNo);
         modelAndView.addObject("page", page);
         modelAndView.addObject("id", typeId);
@@ -88,9 +91,9 @@ public class GoodsCtrl
         {
             modelAndView.addObject("name", "新品商品");
         }
-        if (request.getParameter("pageNumber") != null)
+        if (request.getParameter("pageNo") != null)
         {
-            pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+            pageNumber = Integer.parseInt(request.getParameter("pageNo"));
         }
         Page page = goodsService.getGoodsRecommendPage(typeId, pageNumber);
         modelAndView.addObject("page", page);
@@ -164,7 +167,7 @@ public class GoodsCtrl
     public ModelAndView goodsSearch(ModelAndView modelAndView,HttpServletRequest request) throws UnsupportedEncodingException
     {
         String keyword=request.getParameter("keyword");
-        System.out.println("pageNo = "+request.getParameter("pageNo"));
+//        System.out.println("pageNo = "+request.getParameter("pageNo"));
         int pageNo = 1;
         if (request.getParameter("pageNo") != null)
         {

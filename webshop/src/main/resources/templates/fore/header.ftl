@@ -53,7 +53,7 @@
           </#if>
             <#if user??&&user.isadmin==true>
               <li>
-                  <a href="../admin.jsp" target="_blank">后台管理</a></li>
+                  <a href="/admin/index" target="_blank">后台管理</a></li>
             </#if>
                 </ul>
                 <!--/.navbar-collapse--></div>
