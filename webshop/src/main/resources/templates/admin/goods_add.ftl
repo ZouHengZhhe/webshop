@@ -10,52 +10,32 @@
 <body>
 <div class="container-fluid">
 	
-
-
-
-
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="">蛋糕店后台</a>
-			</div>
-			<div>
-				<ul class="nav navbar-nav">
-					<li ><a href="orderList.action">订单管理</a></li>
-					<li ><a href="userList.action">客户管理</a></li>
-					<li class="active"><a href="goodList.action">商品管理</a></li>
-					<li ><a href="typeList.action">类目管理</a></li>
-					<li ><a href="adminRe.action">修改密码</a></li>
-					<li><a href="logout.action">退出</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<#include "header.html">
 
 	<br><br>
-	<form class="form-horizontal" action="goodSave.action" method="post" enctype="multipart/form-data">
+	<form class="form-horizontal" action="/admin/goods_add" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="input_name" class="col-sm-1 control-label">名称</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="input_name" name="good.name"  required="required">
+				<input type="text" class="form-control" id="input_name" name="name"  required="required">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="input_name" class="col-sm-1 control-label">价格</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="input_name" name="good.price" >
+				<input type="text" class="form-control" id="input_name" name="price" >
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="input_name" class="col-sm-1 control-label">介绍</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="input_name" name="good.intro" >
+				<input type="text" class="form-control" id="input_name" name="intro" >
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="input_name" class="col-sm-1 control-label">库存</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="input_name" name="good.stock" >
+				<input type="text" class="form-control" id="input_name" name="stock" >
 			</div>
 		</div>
 		<div class="form-group">
@@ -79,18 +59,11 @@
 		<div class="form-group">
 			<label for="select_topic" class="col-sm-1 control-label">类目</label>
 			<div class="col-sm-6">
-				<select class="form-control" id="select_topic" name="good.type.id">
-					
-						<option value="5">经典系列</option>
-					
-						<option value="4">法式系列</option>
-					
-						<option value="3">儿童系列</option>
-					
-						<option value="2">零食系列</option>
-					
-						<option value="1">冰淇淋系列</option>
-					
+				<select class="form-control" id="select_topic" name="typeId">
+
+					<#list types as type>
+						<option value="${type.id}">${type.name}</option>
+					</#list>
 				</select>
 			</div>
 		</div>

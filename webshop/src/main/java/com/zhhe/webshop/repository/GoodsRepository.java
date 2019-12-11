@@ -36,12 +36,12 @@ public interface GoodsRepository extends JpaRepository<Goods,Integer>
     @Query(value = "select count(*) from goods where type_id=?",nativeQuery = true)
     int getTypeGoodsCount(int typeId);
 
-    //分页查询热销、新品商品
-    @Query(value = "select * from goods g,recommend r where r.type=? and g.type_id=r.goods_id limit ?,?",nativeQuery = true)
+    //分页查询条幅、热销、新品商品
+    @Query(value = "select * from goods g,recommend r where r.type=? and g.id=r.goods_id limit ?,?",nativeQuery = true)
     List<Goods> getGoodsRecommendList(int typeId,int startIndex,int pageSize);
 
-    //分页查询热销、新品商品总数
-    @Query(value = "select count(*) from goods where type_id=?",nativeQuery = true)
+    //分页查询条幅、热销、新品商品总数
+    @Query(value = "select count(*) from recommend where type=?",nativeQuery = true)
     int getGoodsRecommendCount(int typeId);
 
     //搜索商品，得到商品总数量
@@ -50,4 +50,16 @@ public interface GoodsRepository extends JpaRepository<Goods,Integer>
 
     @Query(value = "select * from goods where name like %?% limit ?,?",nativeQuery = true)
     List<Goods> fuzzySearchGoods(String keyword,int startIndex,int pageSize);
+
+    @Query(value = "select cover from Goods where id=:id")
+    String getCoverName(Integer id);
+
+    @Query(value = "select image1 from Goods where id=:id")
+    String getImg1Name(Integer id);
+
+    @Query(value = "select image2 from Goods where id=:id")
+    String getImg2Name(Integer id);
+
+    @Query(value = "select id from goods limit 0,180",nativeQuery = true)
+    List<Integer> findAllId();
 }

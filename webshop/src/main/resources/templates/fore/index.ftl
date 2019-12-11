@@ -25,7 +25,7 @@
 				<a class="banner_a" href="javascript:;" onclick="buy(${scrollGoodsMap.id})">立刻购买</a>
 				<div class="banner-text">		
 					<a href="/fore/goodsDetail?goodsId=${scrollGoodsMap.id}">
-						<img src="../../static/fore/${scrollGoodsMap.cover}" alt="${scrollGoodsMap.name}" width="350" height="350">
+						<img src="${scrollGoodsMap.coverUrl}" alt="${scrollGoodsMap.name}" width="350" height="350">
 					</a>	
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 				<#list hotGoodsList as item>
                     <div class="col-md-4 gallery-grid glry-two">
                         <a href="/fore/goodsDetail?goodsId=${item.id}">
-                            <img src="../../static/fore/${item.cover}" class="img-responsive" alt="${item.name}" width="350" height="350"/>
+                            <img src="${item.coverUrl}" class="img-responsive" alt="${item.name}" width="350" height="350"/>
                         </a>
                         <div class="gallery-info galrr-info-two">
                             <p>

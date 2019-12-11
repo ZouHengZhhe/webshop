@@ -2,10 +2,7 @@ package com.zhhe.webshop.bean.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /*
  *Author:ZouHeng
@@ -27,4 +24,29 @@ public class Goods
     private String intro;   //简介
     private Integer stock;  //库存
     private Integer type_id;
+
+    @Transient
+    private String typeName;
+    @Transient
+    private String coverUrl;
+    @Transient
+    private String img1Url;
+    @Transient
+    private String img2Url;
+
+    public Goods()
+    {
+    }
+
+    public Goods(String name, String cover, String image1, String image2, Float price, String intro, Integer stock, Integer type_id)
+    {
+        this.name = name;
+        this.cover = cover;
+        this.image1 = image1;
+        this.image2 = image2;
+        this.price = price;
+        this.intro = intro;
+        this.stock = stock;
+        this.type_id = type_id;
+    }
 }

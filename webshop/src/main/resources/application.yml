@@ -27,3 +27,9 @@ spring:
     suffix: .ftl
   mvc:
     static-path-pattern: /static/**
+
+minio:
+  url: http://122.51.35.141:9000
+  username: admin
+  password: zhhe9008321334
+  bucketName: webshop

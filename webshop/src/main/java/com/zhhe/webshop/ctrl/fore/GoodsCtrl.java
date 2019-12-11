@@ -79,7 +79,7 @@ public class GoodsCtrl
     }
 
     @RequestMapping("goodsRecommendList")
-    public ModelAndView goodsRecommendList(ModelAndView modelAndView, ServletRequest request)
+    public ModelAndView goodsRecommendList(ModelAndView modelAndView, HttpServletRequest request)
     {
         int typeId = Integer.parseInt(request.getParameter("typeId"));
         int pageNumber = 1;

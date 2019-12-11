@@ -13,4 +13,7 @@ public interface TypeService
 {
     List<Type> findAll();
     String getTypeNameById(Integer id);
+    boolean addType(String name);
+    boolean delType(Integer id);
+    boolean editType(Integer id ,String name);
 }
