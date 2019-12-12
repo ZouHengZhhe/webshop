@@ -104,4 +104,12 @@ public class AdminUserCtrl
         }
         return modelAndView;
     }
+
+    @RequestMapping("logout")
+    public ModelAndView logout(ModelAndView modelAndView,HttpServletRequest request)
+    {
+        request.getSession().invalidate();  //清空session里面的user信息
+        modelAndView.setViewName("redirect:/fore/index");
+        return modelAndView;
+    }
 }

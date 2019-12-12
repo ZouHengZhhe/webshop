@@ -50,10 +50,10 @@ public class GoodsServiceImpl implements GoodsService
                 myMap.put(key,m.get(key));
             }
             myMap.put("coverUrl",coverUrl);
-
+            myList.add(myMap);
         }
 
-        return list;
+        return myList;
     }
 
     @Override
@@ -70,18 +70,6 @@ public class GoodsServiceImpl implements GoodsService
         myMap.put("coverUrl",coverUrl);
         return myMap;
     }
-
-//    //分页查询商品
-//    @Override
-//    public List<Goods> findGoodsList(int typeId,int pageNo,int pageSize)
-//    {
-//        int startIndex=(pageNo-1)*pageSize;
-//        if (typeId==0)
-//        {
-//            return goodsRepository.findAllGoodsList(startIndex, pageSize);
-//        }
-//        return goodsRepository.findTypeGoodsList(typeId, startIndex, pageSize);
-//    }
 
     //返回分页相关数据模型
     @Override
@@ -128,7 +116,8 @@ public class GoodsServiceImpl implements GoodsService
     @Override
     public GoodsDetail findDetailById(Integer goodsId)
     {
-        Goods goods=goodsRepository.findById(goodsId).get();
+        Goods goods=getGoodsById(goodsId);
+
         Type type=typeRepository.findById(goods.getType_id()).get();
         GoodsDetail goodsDetail=new GoodsDetail(goods, type);
         return goodsDetail;
@@ -137,7 +126,11 @@ public class GoodsServiceImpl implements GoodsService
     @Override
     public Goods getGoodsById(Integer id)
     {
-        return goodsRepository.findById(id).get();
+        Goods goods=goodsRepository.findById(id).get();
+        goods.setCoverUrl(minioUtil.getImgUrl(goods.getCover()));
+        goods.setImg1Url(minioUtil.getImgUrl(goods.getImage1()));
+        goods.setImg2Url(minioUtil.getImgUrl(goods.getImage2()));
+        return goods;
     }
 
     //搜索商品，模糊查询
@@ -179,11 +172,7 @@ public class GoodsServiceImpl implements GoodsService
     @Override
     public Goods getGoodsWithUrl(Integer id)
     {
-        Goods goods=goodsRepository.findById(id).get();
-        goods.setCoverUrl(minioUtil.getImgUrl(goods.getCover()));
-        goods.setImg1Url(minioUtil.getImgUrl(goods.getImage1()));
-        goods.setImg2Url(minioUtil.getImgUrl(goods.getImage2()));
-        return goods;
+        return getGoodsById(id);
     }
 
     //修改商品

@@ -75,7 +75,7 @@
 				<#list newGoodsList as newGoods>
                     <div class="col-md-3 gallery-grid ">
                         <a href="/fore/goodsDetail?goodsId=${newGoods.id}">
-                            <img src="../../static/fore/${newGoods.cover}" class="img-responsive" alt="${newGoods.name}"/>
+                            <img src="${newGoods.coverUrl}" class="img-responsive" alt="${newGoods.name}"/>
                         </a>
                         <div class="gallery-info">
                             <p>

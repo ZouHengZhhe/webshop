@@ -32,17 +32,17 @@
             <div class="col-md-4 single-grid">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="../../static/fore/${goodsDetail.goods.cover}">
+                        <li data-thumb="${goodsDetail.goods.coverUrl}">
                             <div class="thumb-image">
-                                <img src="../../static/fore/${goodsDetail.goods.cover}" data-imagezoom="true" class="img-responsive"></div>
+                                <img src="${goodsDetail.goods.coverUrl}" data-imagezoom="true" class="img-responsive"></div>
                         </li>
-                        <li data-thumb="../../static/fore/${goodsDetail.goods.image1}">
+                        <li data-thumb="${goodsDetail.goods.img1Url}">
                             <div class="thumb-image">
-                                <img src="../../static/fore/${goodsDetail.goods.image1}" data-imagezoom="true" class="img-responsive"></div>
+                                <img src="${goodsDetail.goods.img1Url}" data-imagezoom="true" class="img-responsive"></div>
                         </li>
-                        <li data-thumb="../../static/fore/${goodsDetail.goods.image2}">
+                        <li data-thumb="${goodsDetail.goods.img2Url}">
                             <div class="thumb-image">
-                                <img src="../../static/fore/${goodsDetail.goods.image2}" data-imagezoom="true" class="img-responsive"></div>
+                                <img src="${goodsDetail.goods.img2Url}" data-imagezoom="true" class="img-responsive"></div>
                         </li>
                     </ul>
                 </div>

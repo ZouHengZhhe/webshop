@@ -29,7 +29,7 @@
                       <div class="cart-sec simpleCart_shelfItem">
                           <div class="cart-item cyc">
                               <a href="/fore/goodsDetail?goodsId=${order.itemMap[key].goods_id}">
-                                  <img src="../../static/fore/${order.itemMap[key].goods.cover}" class="img-responsive"></a>
+                                  <img src="${order.itemMap[key].goods.coverUrl}" class="img-responsive"></a>
                           </div>
                           <div class="cart-item-info">
                               <h3>

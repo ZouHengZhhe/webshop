@@ -29,7 +29,7 @@
                             <span></span>
                         </div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
-                            <img src="../../static/fore/${g.cover}" class="img-responsive" alt="${g.name}" width="240" height="240">
+                            <img src="${g.coverUrl}" class="img-responsive" alt="${g.name}" width="240" height="240">
                             <div class="b-wrapper">
                                 <h4 class="b-animate b-from-left  b-delay03">
                                     <button>查看详情</button></h4>
