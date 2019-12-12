@@ -36,8 +36,8 @@
             <tr>
                 <td><p>${user.id}</p></td>
                 <td><p>${user.username}</p></td>
-                <td><p>${user.name}</p></td>
                 <td><p>${user.email}</p></td>
+                <td><p>${user.name}</p></td>
                 <td><p>${user.phone}</p></td>
                 <td><p>${user.address}</p></td>
                 <td>
