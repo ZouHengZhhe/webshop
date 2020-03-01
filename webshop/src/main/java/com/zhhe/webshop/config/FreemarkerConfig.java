@@ -1,4 +1,4 @@
-package com.zhhe.webshop.freemarker;
+package com.zhhe.webshop.config;
 
 import com.zhhe.webshop.service.TypeService;
 import freemarker.template.TemplateModelException;
